@@ -21,6 +21,9 @@
     <transition v-if="enablePlayer" name="slide-up">
       <Lyrics v-show="showLyrics" />
     </transition>
+    <transition name="slide-up">
+      <Comment v-show="showComment" />
+    </transition>
   </div>
 </template>
 
@@ -34,6 +37,7 @@ import Toast from './components/Toast.vue';
 import { ipcRenderer } from './electron/ipcRenderer';
 import { isAccountLoggedIn, isLooseLoggedIn } from '@/utils/auth';
 import Lyrics from './views/lyrics.vue';
+import Comment from './views/comment.vue';
 import { mapState } from 'vuex';
 
 export default {
@@ -45,6 +49,7 @@ export default {
     ModalAddTrackToPlaylist,
     ModalNewPlaylist,
     Lyrics,
+    Comment,
     Scrollbar,
   },
   data() {
@@ -54,7 +59,13 @@ export default {
     };
   },
   computed: {
-    ...mapState(['showLyrics', 'settings', 'player', 'enableScrolling']),
+    ...mapState([
+      'showLyrics',
+      'showComment',
+      'settings',
+      'player',
+      'enableScrolling',
+    ]),
     isAccountLoggedIn() {
       return isAccountLoggedIn();
     },

@@ -100,6 +100,17 @@
           <button-icon
             :title="$t('player.nextUp')"
             :class="{
+              disabled: player.isPersonalFM,
+            }"
+            style="margin-right: 10px"
+            @click.native="toggleComment"
+          >
+            <svg-icon icon-class="comment" />
+            <span v-if="commentNum" class="commentNum">{{ commentNum }}</span>
+          </button-icon>
+          <button-icon
+            :title="$t('player.nextUp')"
+            :class="{
               active: $route.name === 'next',
               disabled: player.isPersonalFM,
             }"
@@ -183,12 +194,18 @@ import '@/assets/css/slider.css';
 import ButtonIcon from '@/components/ButtonIcon.vue';
 import VueSlider from 'vue-slider-component';
 import { goToListSource, hasListSource } from '@/utils/playList';
+import { getMusicComment } from '@/api/comment';
 
 export default {
   name: 'Player',
   components: {
     ButtonIcon,
     VueSlider,
+  },
+  data() {
+    return {
+      commentNum: '',
+    };
   },
   computed: {
     ...mapState(['player', 'settings', 'data']),
@@ -212,9 +229,41 @@ export default {
         : '';
     },
   },
+  watch: {
+    currentTrack: {
+      deep: true,
+      handler() {
+        this.getCommentNum();
+      },
+    },
+  },
   methods: {
-    ...mapMutations(['toggleLyrics']),
+    ...mapMutations(['toggleLyrics', 'toggleComment']),
     ...mapActions(['showToast', 'likeATrack']),
+    async getCommentNum() {
+      try {
+        if (!this.currentTrack) {
+          return;
+        }
+        this.commentNum = '';
+        let { data } = await getMusicComment({
+          id: this.currentTrack.id,
+          type: 0,
+        });
+        let total = data.totalCount;
+        if (total < 1000) {
+          this.commentNum = total;
+        } else if (total < 10000) {
+          this.commentNum = '999+';
+        } else if (total < 100000) {
+          this.commentNum = '1w+';
+        } else {
+          this.commentNum = '10w+';
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    },
     playPrevTrack() {
       this.player.playPrevTrack();
     },
@@ -408,6 +457,15 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  .commentNum {
+    position: absolute;
+    left: 17px;
+    top: 0px;
+    background-color: var(--color-navbar-bg);
+    color: var(--color-text);
+  }
+
   .expand {
     margin-left: 24px;
     .svg-icon {

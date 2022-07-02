@@ -52,6 +52,9 @@ export default {
   toggleLyrics(state) {
     state.showLyrics = !state.showLyrics;
   },
+  toggleComment(state) {
+    state.showComment = !state.showComment;
+  },
   updateDailyTracks(state, dailyTracks) {
     state.dailyTracks = dailyTracks;
   },

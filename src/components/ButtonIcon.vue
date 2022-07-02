@@ -10,6 +10,7 @@ export default {
 
 <style lang="scss" scoped>
 button {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

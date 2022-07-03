@@ -2,6 +2,16 @@ fork自[https://github.com/qier222/YesPlayMusic](https://github.com/qier222/YesP
 
 在其基础上增加了查看评论、发布评论、回复评论、点赞评论的功能。
 
+## 使用
+
+### 在线访问
+
+[https://player.lxqnsys.com/](https://player.lxqnsys.com/)。
+
+## Windows、MacOS安装包
+
+[https://pan.baidu.com/s/1PQHZaxXGTVqs5nfDuOvtsA?pwd=jqjw](https://pan.baidu.com/s/1PQHZaxXGTVqs5nfDuOvtsA?pwd=jqjw)。
+
 ## ⚙️ 部署至 Vercel
 
 除了下载安装包使用，你还可以将本项目部署到 Vercel 或你的服务器上。下面是部署到 Vercel 的方法。

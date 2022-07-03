@@ -483,7 +483,7 @@
         </div>
       </div>
 
-      <div class="item">
+      <!-- <div class="item">
         <div class="left">
           <div class="title">
             {{ $t('settings.showPlaylistsByAppleMusic') }}</div
@@ -500,7 +500,7 @@
             <label for="show-playlists-by-apple-music"></label>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="item">
         <div class="left">
@@ -877,7 +877,7 @@ export default {
     },
     showPlaylistsByAppleMusic: {
       get() {
-        if (this.settings.showPlaylistsByAppleMusic === undefined) return true;
+        if (this.settings.showPlaylistsByAppleMusic === undefined) return false;
         return this.settings.showPlaylistsByAppleMusic;
       },
       set(value) {

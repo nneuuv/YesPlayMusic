@@ -1,6 +1,6 @@
 <template>
   <div v-show="show" class="home">
-    <div
+    <!-- <div
       v-if="settings.showPlaylistsByAppleMusic !== false"
       class="index-row first-row"
     >
@@ -11,7 +11,7 @@
         sub-text="appleMusic"
         :image-size="1024"
       />
-    </div>
+    </div> -->
     <div class="index-row">
       <div class="title">
         {{ $t('home.recommendPlaylist') }}

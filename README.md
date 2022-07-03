@@ -1,12 +1,16 @@
 fork自[https://github.com/qier222/YesPlayMusic](https://github.com/qier222/YesPlayMusic)。
 
-在其基础上增加了查看评论、发布评论、回复评论、点赞评论的功能。
+在其基础上：
+
+1.增加了查看评论、发布评论、回复评论、点赞评论的功能。
+
+2.去掉了首页静态的by Apple Music栏目。
 
 ## 使用
 
 ### 在线访问
 
-[https://player.lxqnsys.com/](https://player.lxqnsys.com/)。
+[https://music.lxqnsys.com/](https://music.lxqnsys.com/)。
 
 ## Windows、MacOS安装包
 
@@ -16,7 +20,7 @@ fork自[https://github.com/qier222/YesPlayMusic](https://github.com/qier222/YesP
 
 除了下载安装包使用，你还可以将本项目部署到 Vercel 或你的服务器上。下面是部署到 Vercel 的方法。
 
-本项目的 Demo (https://player.lxqnsys.com/) 就是部署在 Vercel 上的网站。
+本项目的 Demo (https://music.lxqnsys.com/) 就是部署在 Vercel 上的网站。
 
 [![Powered by Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com/?utm_source=ohmusic&utm_campaign=oss)
 

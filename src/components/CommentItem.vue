@@ -1,5 +1,5 @@
 <template>
-  <div class="commentItem" @click="showReply = true">
+  <div class="commentItem" @click.stop="showReply = true">
     <div class="avatarBox">
       <img :src="img" alt="" />
     </div>
@@ -210,6 +210,7 @@ export default {
         color: #409eff;
         font-size: 12px;
         cursor: pointer;
+        user-select: none;
       }
     }
 
@@ -218,6 +219,7 @@ export default {
       font-size: 12px;
       margin-top: 5px;
       cursor: pointer;
+      user-select: none;
     }
 
     .beReplied {

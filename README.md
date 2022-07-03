@@ -110,6 +110,7 @@ YesPlayMusic 地址为 `http://localhost`
 
 | 命令                                       | 说明                      |
 | ------------------------------------------ | ------------------------- |
+| `yarn run electron:build`  | 打包所有平台             |
 | `yarn electron:build --windows nsis:ia32`  | Windows 32 位             |
 | `yarn electron:build --windows nsis:arm64` | Windows ARM               |
 | `yarn electron:build --linux deb:armv7l`   | Debian armv7l（树莓派等） |

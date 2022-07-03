@@ -123,6 +123,7 @@ export default {
       loading: false,
       loadend: false,
       commentTip: '',
+      requesting: false,
     };
   },
   computed: {
@@ -234,6 +235,10 @@ export default {
 
     async getReply(item, time = '') {
       try {
+        if (this.requesting) {
+          return;
+        }
+        this.requesting = true;
         NProgress.start();
         let data = await getMusicCommentFloor({
           id: this.currentTrack.id,
@@ -244,12 +249,18 @@ export default {
         });
         item.replyList.push(...data.data.comments);
         NProgress.done();
+        this.requesting = false;
       } catch (e) {
         console.log(e);
+        this.requesting = false;
       }
     },
 
     async good(data, data2) {
+      if (this.requesting) {
+        return;
+      }
+      this.requesting = true;
       NProgress.start();
       let item = data || data2;
       try {
@@ -265,8 +276,10 @@ export default {
           item.liked = !item.liked;
         }
         NProgress.done();
+        this.requesting = false;
       } catch (e) {
         console.log(e);
+        this.requesting = false;
       }
     },
 
@@ -290,9 +303,10 @@ export default {
 
     async sendComment(value, commentId = '') {
       try {
-        if (!value) {
+        if (!value || this.requesting) {
           return;
         }
+        this.requesting = true;
         NProgress.start();
         await musicComment({
           t: commentId ? 2 : 1, // 1 发送, 2 回复
@@ -306,8 +320,10 @@ export default {
         this.reset();
         this.reload();
         NProgress.done();
+        this.requesting = false;
       } catch (e) {
         console.log(e);
+        this.requesting = false;
       }
     },
 

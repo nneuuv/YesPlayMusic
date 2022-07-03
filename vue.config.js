@@ -85,7 +85,7 @@ module.exports = {
         publish: [
           {
             provider: 'github',
-            owner: 'qier222',
+            owner: 'wanglin2',
             repo: 'YesPlayMusic',
             vPrefixedTagName: true,
             releaseType: 'draft',
